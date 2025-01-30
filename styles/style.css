@@ -1,0 +1,434 @@
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Spartan:wght@100..900&display=swap');
+
+
+/* GLOBAL RESET */
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: all ease-in-out 500ms;
+}
+
+/* ANIMATIONS */
+@keyframes slideFrontRight
+{
+    0%
+    {
+        transform: translateX(0);
+    }
+
+    100%
+    {
+        transform: translateX(400px);
+    }
+}
+
+@keyframes slideFrontBack
+{
+    0%
+    {
+        transform: translateX(400px);
+    }
+
+    100%
+    {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideBackOut
+{
+    0%
+    {
+        transform: translateX(0);
+    }
+
+    100%
+    {
+        transform: translateX(-400px);
+    }
+}
+
+@keyframes slideBackIn
+{
+    0%
+    {
+        transform: translateX(-400px);
+    }
+
+    100%
+    {
+        transform: translateX(0px);
+    }
+}
+
+.slideBackOut
+{
+    animation: slideBackOut 400ms ease-in-out forwards;
+}
+
+.slideBackIn
+{
+    animation: slideBackIn 400ms ease-in-out forwards;
+}
+
+.slideFrontRight
+{
+    animation: slideFrontRight 400ms ease-in-out forwards;
+}
+
+.slideFrontBack
+{
+    animation: slideFrontBack 400ms ease-in-out forwards;
+}
+/* VARIABLES */
+:root
+{
+    --general-font : "League Spartan", serif;
+    --secondary-font : "Inter" , serif;
+}
+/* HTML + BODY */
+
+html
+{
+    height: 100%;
+}
+
+body
+{
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F1F4FF;
+    padding: 10px;
+}
+
+/* GENERAL STYLES */
+.card
+{
+    width: 350px;
+    height: 535px;
+    border-radius: .85rem;
+    position: relative;
+    background-color: #FFFFFF;
+    overflow: hidden;
+}
+
+.card > .front
+{
+    background: url("../images/cover-photo.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transform: translateX(0);
+}
+
+.front > *
+{
+    position: relative;
+    z-index: 1;
+}
+
+.card > .front::before
+{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.562);
+    position: absolute;
+    border-radius: inherit;
+}
+
+.card > .front > .header,
+.card > .back > .header
+{
+    padding: 3px 8px 8px 3px;
+    height: auto;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card > .back > .header
+{
+    position: absolute;
+    top: 2px;
+    right: 0;
+    z-index: 1;
+}
+
+
+
+.header > .time
+{
+    font-weight: 800;
+    font-family: var(--secondary-font);
+    color: white;
+    font-size: 0.60rem;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translate(-50% , -50%);
+}
+
+
+.battery-information
+{
+    top: 0;
+    right: 0;
+    position: relative;
+    width: auto;
+    height: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
+
+.header > .battery-information > .percentage
+{
+    font-weight: 800;
+    font-family: var(--secondary-font);
+    color: white;
+    font-size: 0.60rem;
+}
+
+
+.header > .battery-information > .battery
+{
+    border: 1px solid #FFFFFF;
+    width: 20px;
+    height: 8px;
+    padding: 0.07rem;
+    display: grid;
+    grid-auto-flow: column;
+    
+    grid-template-rows: 2px 2px;
+}
+
+.battery > div:not(.sides)
+{
+    background-color: white;
+}
+
+.battery > .sides
+{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: -3px;
+    top: 50%;
+    transform: translate(-50% , -50%);
+}
+
+.sides > .square
+{
+    width: 2px;
+    height: 2px;
+    background-color: white;
+}
+
+.back > .header > .time,
+.back > .header .battery-information > .percentage
+{
+    color: black;
+}
+
+.back > .header > .battery-information .square,
+.back > .header  > .battery-information > .battery > div:not(.sides)
+{
+
+    background-color: black;
+}
+
+.back > .header > .battery-information > .battery
+{
+    border: 1px solid black;
+}
+
+.front > .body
+{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.body > .information
+{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.information > .name,
+.information > .position
+{
+    font-family: var(--general-font);
+    color: #FFFFFF;
+}
+
+.information > .name
+{
+    font-size: 1.65rem;
+    font-weight: 700;
+}
+
+.information > .position
+{
+    font-size: 1rem;
+    font-weight: 100;
+}
+
+.changeBtn
+{
+    background-color: #3b3b3b65;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all ease-in-out 400ms;
+}
+
+.changeBtn:hover
+{
+    background-color: #ffffffdc;
+}
+.changeBtn:hover svg > path
+{
+    stroke: grey;
+}
+.changeBtn:hover svg 
+{
+    padding-left: 4px;
+}
+
+.back 
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    display: none;
+    transform: translateX(-400px);
+    padding-top: 5px;
+}
+
+.backBtn
+{
+    font-weight: 700;
+    font-family: var(--general-font);
+    font-size: 0.85rem;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.back > .body
+{
+    padding: 30px ;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.back > .body img
+{
+    border-radius: 50%;
+}
+
+.back > .body > .information
+{
+    width: 200px;
+}
+
+.back > .body > .information .name,
+.back > .body > .information .position
+{
+    color: #318DBB;
+}
+
+.contacts
+{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style-type: none;
+}
+
+.contacts > li
+{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contacts > li > p
+{
+    font-weight: 300;
+    font-family: var(--general-font);
+}
+
+.bio
+{
+    text-align: justify;
+    font-family: var(--general-font);
+    font-weight: 400;
+    line-height: 1.05rem;
+}
+
+.line
+{
+    width: 100%;
+    height: 2px;
+    background-color: black;
+}
+
+.socials-container
+{
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+}
+
+.socials-container > li
+{
+    cursor: pointer;
+}
+
+li#twitter:hover path
+{
+    fill:#55acee ;
+}
+
+li#linkedin:hover path
+{
+    fill:#0A66C2 ;
+}
+
+li#github:hover path
+{
+    fill:orangered ;
+}
+/* MEDIA QUERIES */
