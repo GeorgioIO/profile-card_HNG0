@@ -52,7 +52,7 @@ function manipulateBattery()
     getBattery().then(function(percentage){
         let batteryPercentage = percentage;
         let btrObject = getCols(batteryPercentage);
-        if(!btrObject)
+        if(!percentage)
         {
             btrObject = {cols : 6 , div : 12};
             batteryPercentage = 74;
