@@ -96,9 +96,13 @@ function getCols(percentage)
 // Return battery percentage 
 function getBattery()
 {
+    if (!navigator.getBattery) {
+        return Promise.resolve(74); // Fallback if the Battery API is not supported
+    }
+
     return currentBatteryPercentage = navigator.getBattery().then(function(battery) {
-        return battery.level * 100;
-    })
+        return battery.level * 100 ||  74;
+    }).catch(() => 74);
 }
 
 function getTime()
